@@ -1,0 +1,38 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Marvel Demo</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body        { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h1><span class="fa fa-globe"></span> Marvel DEMO</h1>
+
+        <%if (logout) { %>
+            <h3>Welcome, <%= user.local.email %></h3>
+            <p><a href="/logout" class="btn btn-default btn-sm">Logout</a> <a href="/profile" class="btn btn-default btn-sm">My Profile</a></p>
+        <% } else { %>
+            <p>Login or Register with:</p>
+
+            <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+            <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+        <% } %>
+        
+        <ul class="characters">
+            <% for(var i=0; i<characters.length; i++) {%>
+                <li><a href='/character/<%=characters[i].charID%>'><%=characters[i].name%></a></li>
+            <% } %>
+        </ul>
+        
+    </div>
+
+</div>
+</body>
+</html>
